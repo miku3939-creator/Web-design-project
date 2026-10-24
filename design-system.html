@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>样式指南 — 髹·两面（开发用）</title>
+<meta name="theme-color" content="#060505">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/framework.css">
+</head>
+<body data-page="about">
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<header class="site-head">
+  <a class="brand" href="index.html" aria-label="髹·两面 首页">
+    <span class="seal brand__seal" aria-hidden="true">髹</span>
+    <span class="brand__text"><b>髹 · 两面</b><small>设计底座 · 开发参考页</small></span>
+  </a>
+  <nav class="site-nav" aria-label="主导航">
+    <a href="index.html" data-nav="home">首页</a>
+    <a href="collection.html" data-nav="collection">典藏馆</a>
+    <a href="story.html" data-nav="story">入戏传</a>
+    <a href="about.html" data-nav="about">关于</a>
+  </nav>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="mobileNav" aria-label="打开菜单"><span></span><span></span><span></span></button>
+</header>
+
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <nav class="page-head__crumb"><a href="index.html">首页</a><span>/</span><span>样式指南</span></nav>
+      <div class="page-head__grid">
+        <div>
+          <p class="eyebrow">DESIGN SYSTEM · 开发参考</p>
+          <h1>样式指南</h1>
+        </div>
+        <div class="page-head__side">
+          <p>本页只给开发与美术用，<b style="color:var(--gold-2)">不进导航、不进匿名版</b>。列出全部组件、色板与槽位约定；美术定稿后更新这里的值，再同步到 css/framework.css 的 :root。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:46px 0">
+    <div class="ds-grid">
+      <nav class="ds-side" aria-label="样式指南目录">
+        <a href="#ds-color">色彩</a>
+        <a href="#ds-type">字体层级</a>
+        <a href="#ds-slot">槽位系统</a>
+        <a href="#ds-btn">按钮与标签</a>
+        <a href="#ds-cabinet">展柜卡片</a>
+        <a href="#ds-label">展签</a>
+        <a href="#ds-stage">舞台与热点</a>
+        <a href="#ds-choice">选择点</a>
+        <a href="#ds-codex">图鉴</a>
+        <a href="#ds-card">收藏卡</a>
+      </nav>
+
+      <div class="ds-main">
+        <section id="ds-color">
+          <h3>色彩</h3>
+          <div class="ds-row">
+            <div class="ds-swatch"><i style="background:#060505"></i><b>展厅底</b><span>--bg #060505</span></div>
+            <div class="ds-swatch"><i style="background:#0d0a08"></i><b>展墙</b><span>--panel #0D0A08</span></div>
+            <div class="ds-swatch"><i style="background:#14100c"></i><b>展柜框</b><span>--cabinet #14100C</span></div>
+            <div class="ds-swatch"><i style="background:#c9a15a"></i><b>金</b><span>--gold #C9A15A</span></div>
+            <div class="ds-swatch"><i style="background:#e8c98a"></i><b>金·亮</b><span>--gold-2 #E8C98A</span></div>
+            <div class="ds-swatch"><i style="background:#b23a24"></i><b>朱</b><span>--red #B23A24</span></div>
+            <div class="ds-swatch"><i style="background:#e9e0d0"></i><b>宣</b><span>--paper #E9E0D0</span></div>
+            <div class="ds-swatch"><i style="background:#8e959c"></i><b>青</b><span>--cool #8E959C</span></div>
+          </div>
+          <p class="ds-note">定稿原则：深色展厅为底，金色只做引导线与点睛，朱色只做强调与印章。避免大面积渐变与饱和色块。</p>
+        </section>
+
+        <section id="ds-type">
+          <h3>字体层级</h3>
+          <div class="ds-type"><b>H1 · --serif · clamp(52px,7vw,104px)</b><span class="h1">一漆，两面。</span></div>
+          <div class="ds-type"><b>H2 · --serif · clamp(32px,4vw,58px)</b><span class="h2">四道工序，一场慢。</span></div>
+          <div class="ds-type"><b>H3 · --serif</b><span class="h3">凤鸟纹 · PHOENIX</span></div>
+          <div class="ds-type"><b>正文 · --sans · 14px/2.05</b><p class="body-copy">楚式漆器以木胎为主，黑漆为地，朱漆与金线为神。</p></div>
+          <div class="ds-type"><b>叙事 · --kai</b><p class="kai" style="font-size:17px;line-height:2.2">雨落在郢都的青瓦上。</p></div>
+          <div class="ds-type"><b>眉题 · eyebrow</b><p class="eyebrow">THE COLLECTION · 观器</p></div>
+          <div class="ds-type"><b>微标 · mono-label</b><p class="mono-label">ABOUT THIS OBJECT</p></div>
+        </section>
+
+        <section id="ds-slot">
+          <h3>槽位系统（框架核心约定）</h3>
+          <div class="ds-row" style="align-items:flex-start;flex-direction:column">
+            <p class="body-copy">文字槽位：<span class="slot">待填：器物名（≤12字）</span>——暗金虚下划线，填好内容后把 span 换成纯文字即可。</p>
+            <p class="body-copy">弱化槽位：<span class="slot slot--muted">待填：说明文字</span></p>
+            <div class="temp-wrap" style="width:220px">
+              <img src="assets/favicon.svg" alt="" style="opacity:.4;width:220px;background:#0d0a08">
+              <span class="temp-badge">临时图·待替换</span>
+            </div>
+            <p class="body-copy" style="margin-top:8px">临时图：temp-wrap 包住 + temp-badge 角标，替换定稿图后删掉角标。</p>
+            <div class="stub is-interactive" style="width:100%">
+              <div><b>互动槽位：某游戏模块（点按即通过）</b><span>真实实现替换 stub 时，删掉这个块。接口见 js/story.js 头部注释。</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="ds-btn">
+          <h3>按钮与标签</h3>
+          <div class="ds-row">
+            <a class="btn btn--red" href="#"><span>主行动</span><span class="arr">→</span></a>
+            <a class="btn btn--ghost" href="#"><span>次行动</span><span class="arr">→</span></a>
+            <a class="btn btn--small" href="#"><span>小按钮</span><span class="arr">→</span></a>
+            <button class="btn" disabled><span>禁用态</span></button>
+          </div>
+          <div class="ds-row" style="margin-top:14px">
+            <button class="chip is-active">选中</button>
+            <button class="chip">未选中</button>
+            <span class="tag">凤鸟纹</span>
+            <span class="tag tag--accent">镇馆之宝</span>
+            <span class="seal">髹</span>
+            <a class="link-arrow" href="#">链接箭头</a>
+          </div>
+        </section>
+
+        <section id="ds-cabinet">
+          <h3>展柜卡片</h3>
+          <div class="cabinet-grid" style="grid-template-columns:1fr 1fr;width:100%">
+            <a class="cabinet" href="#">
+              <div class="cabinet__glass temp-wrap">
+                <span class="cabinet__no">CHU · 001</span><span class="cabinet__cat">乐器</span>
+                <div class="cabinet__art" aria-hidden="true" style="display:grid;place-items:center;height:100%"><span class="slot">图</span></div>
+                <span class="temp-badge">临时图</span>
+                <span class="cabinet__arrow">查看详情 →</span>
+                <span class="cabinet__floor"></span>
+              </div>
+              <div class="cabinet__body">
+                <span class="cabinet__era">战国中晚期</span>
+                <h2 class="cabinet__name">虎座鸟架鼓</h2>
+                <span class="cabinet__en">Tiger-and-Phoenix Drum Stand</span>
+                <p class="cabinet__desc">待填：一句话简介</p>
+                <div class="cabinet__tags"><span class="tag">凤鸟</span><span class="tag">云纹</span></div>
+                <div class="cabinet__foot"><span>木胎 · 黑漆 · 朱绘</span><span>湖北省博物馆</span></div>
+              </div>
+            </a>
+            <div class="cabinet">
+              <div class="cabinet__glass" style="display:grid;place-items:center;text-align:center">
+                <p class="body-copy">悬停效果：<br>聚光渐亮、玻璃反光、器物上浮、边框转金。<br>这是「沉浸式博物馆」的核心质感来源。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="ds-label">
+          <h3>展签</h3>
+          <div class="label-sheet" style="max-width:520px">
+            <div class="label-sheet__head">
+              <div class="object__no"><i></i><span>CHU · 001 · 战国中晚期</span></div>
+              <h1 class="object__name">虎座鸟架鼓</h1>
+              <p class="object__en">Tiger-and-Phoenix Drum Stand</p>
+            </div>
+            <div class="label-sheet__body">
+              <p class="object__summary">待填：一句话简介（≤60字）</p>
+              <dl class="object__meta">
+                <div><dt>器型</dt><dd>乐器</dd></div>
+                <div><dt>纹样</dt><dd>凤鸟 · 云纹</dd></div>
+                <div><dt>材质</dt><dd>木胎 · 黑漆 · 朱绘</dd></div>
+                <div><dt>尺寸</dt><dd>待填</dd></div>
+                <div><dt>出土</dt><dd>待填</dd></div>
+                <div><dt>馆藏</dt><dd>待填</dd></div>
+              </dl>
+            </div>
+          </div>
+        </section>
+
+        <section id="ds-stage">
+          <h3>舞台与热点</h3>
+          <div class="stage-frame" style="max-width:420px;aspect-ratio:1">
+            <div class="object__tools">
+              <button class="object__tool" type="button">细看</button>
+              <button class="object__tool is-active" type="button">纹样标注</button>
+            </div>
+            <div class="object__art" style="display:grid;place-items:center"><span class="slot">器物图</span></div>
+            <button class="hotspot" type="button" style="left:50%;top:40%">
+              <span class="hotspot__tip"><b>标注点</b><span>待填：标注说明</span></span>
+            </button>
+            <span class="object__label">原创矢量重绘 · 非文物照片</span>
+          </div>
+        </section>
+
+        <section id="ds-choice">
+          <h3>选择点</h3>
+          <div class="choice-options" style="margin:0;justify-content:flex-start">
+            <button class="choice-option is-picked" type="button">
+              <span class="choice-option__swatch" style="background:#1a100c"></span><b>玄</b><span>夜的底色</span>
+            </button>
+            <button class="choice-option" type="button">
+              <span class="choice-option__swatch" style="background:#a9321f"></span><b>朱</b><span>火的颜色</span>
+            </button>
+            <button class="choice-option" type="button">
+              <span class="choice-option__swatch" style="background:#c9a15a"></span><b>金</b><span>光的落点</span>
+            </button>
+          </div>
+          <div class="rating-row" style="justify-content:flex-start;margin-top:16px">
+            <span class="rating-star is-on">★</span><span class="rating-star is-on">★</span><span class="rating-star">★</span>
+          </div>
+        </section>
+
+        <section id="ds-codex">
+          <h3>图鉴（锁定 → 解锁）</h3>
+          <div class="codex__grid" style="width:100%">
+            <div class="codex-item is-locked"><span class="codex-item__lock">鎖</span><p class="codex-item__text" style="text-align:center">完成「制胎」后解锁</p></div>
+            <div class="codex-item is-open"><span class="codex-item__no">01 / UNLOCKED</span><h3 class="codex-item__name">制胎</h3><p class="codex-item__text">待填：解锁说明</p></div>
+            <div class="codex-item is-locked"><span class="codex-item__lock">鎖</span><p class="codex-item__text" style="text-align:center">完成「髹漆」后解锁</p></div>
+            <div class="codex-item is-locked"><span class="codex-item__lock">鎖</span><p class="codex-item__text" style="text-align:center">完成「描金」后解锁</p></div>
+          </div>
+        </section>
+
+        <section id="ds-card">
+          <h3>收藏卡</h3>
+          <div class="collection-card" style="width:280px">
+            <div class="collection-card__top"><span>髹 · 两 面</span><span>入戏传 / 我的楚漆</span></div>
+            <div class="collection-card__title">我 的 楚 漆</div>
+            <div class="collection-card__sub">CHU LACQUER · MY PIECE</div>
+            <div class="collection-card__art"><span class="slot" style="font-size:40px">盘</span></div>
+            <div class="collection-card__name">凤鸟纹漆盘</div>
+            <div class="collection-card__lines"><span>制胎 · 旋出圆骨</span><span>髹漆 · 覆一层夜</span><span>描金 · 醒一只凤</span><span>推光 · 收一束光</span></div>
+            <div class="collection-card__seal">髹</div>
+            <div class="collection-card__no">CHU-2026-0000</div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="js/site.js" defer></script>
+</body>
+</html>

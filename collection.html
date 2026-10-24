@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>典藏馆 — 髹·两面</title>
+<meta name="description" content="【待填：页描述】">
+<meta name="theme-color" content="#060505">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/framework.css">
+</head>
+<body data-page="collection">
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<header class="site-head">
+  <a class="brand" href="index.html" aria-label="髹·两面 首页">
+    <span class="seal brand__seal" aria-hidden="true">髹</span>
+    <span class="brand__text"><b>髹 · 两面</b><small>待填·站点副名</small></span>
+  </a>
+  <nav class="site-nav" aria-label="主导航">
+    <a href="index.html" data-nav="home">首页</a>
+    <a href="collection.html" data-nav="collection">典藏馆</a>
+    <a href="story.html" data-nav="story">入戏传</a>
+    <a href="about.html" data-nav="about">关于</a>
+  </nav>
+  <div class="mode-switch" aria-label="切换观看模式">
+    <a href="collection.html" data-mode="view">观器</a>
+    <a href="story.html" data-mode="make">造物</a>
+  </div>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="mobileNav" aria-label="打开菜单"><span></span><span></span><span></span></button>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" data-nav="home">首页 <small>HOME</small></a>
+  <a href="collection.html" data-nav="collection">典藏馆 <small>THE COLLECTION</small></a>
+  <a href="story.html" data-nav="story">入戏传 <small>THE MAKING</small></a>
+  <a href="about.html" data-nav="about">关于 <small>ABOUT</small></a>
+  <div class="mode-switch">
+    <a href="collection.html" data-mode="view">观器</a>
+    <a href="story.html" data-mode="make">造物</a>
+  </div>
+  <p class="mobile-meta">2026 武汉大学“零杯”网页设计大赛 · 壹组</p>
+</div>
+
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <nav class="page-head__crumb reveal" aria-label="面包屑">
+        <a href="index.html">首页</a><span>/</span><span>典藏馆</span>
+      </nav>
+      <div class="page-head__grid">
+        <div>
+          <p class="eyebrow reveal">THE COLLECTION · 观器</p>
+          <h1 class="reveal" style="--d:.06s">典藏馆</h1>
+        </div>
+        <div class="page-head__side reveal" style="--d:.14s">
+          <p><span class="slot">待填：展厅导语（≤60字）</span></p>
+          <div class="page-head__meta">
+            <span>待填·数字（如：07 件器型）</span>
+            <span>待填·数字</span>
+            <span>待填·数字</span>
+            <span>原创矢量重绘</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="collection-bar" aria-label="筛选馆藏">
+    <div class="collection-bar__inner">
+      <div class="filter-group" role="group" aria-label="按器型筛选">
+        <span class="filter-group__label">器型</span>
+        <button class="chip is-active" type="button" data-filter="category" data-value="全部" aria-pressed="true">全部</button>
+        <button class="chip" type="button" data-filter="category" data-value="乐器" aria-pressed="false">乐器</button>
+        <button class="chip" type="button" data-filter="category" data-value="饮食器" aria-pressed="false">饮食器</button>
+        <button class="chip" type="button" data-filter="category" data-value="妆具" aria-pressed="false">妆具</button>
+        <button class="chip" type="button" data-filter="category" data-value="陈设" aria-pressed="false">陈设</button>
+        <button class="chip" type="button" data-filter="category" data-value="挹器" aria-pressed="false">挹器</button>
+      </div>
+      <div class="filter-group" role="group" aria-label="按纹样筛选">
+        <span class="filter-group__label">纹样</span>
+        <button class="chip is-active" type="button" data-filter="pattern" data-value="全部" aria-pressed="true">全部</button>
+        <button class="chip" type="button" data-filter="pattern" data-value="凤鸟" aria-pressed="false">凤鸟</button>
+        <button class="chip" type="button" data-filter="pattern" data-value="云纹" aria-pressed="false">云纹</button>
+        <button class="chip" type="button" data-filter="pattern" data-value="几何" aria-pressed="false">几何</button>
+        <button class="chip" type="button" data-filter="pattern" data-value="动物" aria-pressed="false">动物</button>
+      </div>
+      <div class="collection-bar__spacer"></div>
+      <label class="search-box">
+        <span aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" placeholder="搜索器物、纹样…" aria-label="搜索器物或纹样">
+      </label>
+      <span class="result-count"><b id="resultCount">00</b> 件藏品</span>
+    </div>
+  </section>
+
+  <section class="collection">
+    <div class="collection__intro">
+      <p class="reveal"><span class="slot">待填：展厅说明一（≤50字）</span></p>
+      <p class="reveal" style="--d:.05s"><span class="slot">待填：展厅说明二（≤50字）</span></p>
+    </div>
+    <div class="cabinet-grid" id="cabinetGrid"></div>
+    <div class="empty-state" id="emptyState">
+      <p>没有找到这件器物。</p>
+      <small>换一个器型或纹样，或者清空搜索。</small>
+      <button class="btn btn--small" type="button" id="clearFilters"><span>清空筛选</span></button>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="site-foot__top">
+    <div class="site-foot__brand">
+      <a class="brand" href="index.html">
+        <span class="seal brand__seal" aria-hidden="true">髹</span>
+        <span class="brand__text"><b>髹 · 两面</b><small>待填·站点副名</small></span>
+      </a>
+      <p><span class="slot">待填：页脚导语</span></p>
+    </div>
+    <div class="site-foot__cols">
+      <div>
+        <h3>展览</h3>
+        <a href="collection.html">典藏馆</a>
+        <a href="story.html">入戏传</a>
+        <a href="about.html">关于</a>
+      </div>
+      <div>
+        <h3>项目</h3>
+        <a href="about.html">关于</a>
+        <a href="about.html#tech">技术与规格</a>
+        <a href="about.html#rights">内容与版权</a>
+      </div>
+      <div>
+        <h3>声明</h3>
+        <p><span class="slot">待填：素材声明</span></p>
+        <p><span class="slot">待填：叙事声明</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="site-foot__bottom">
+    <span>2026 武汉大学“零杯”网页设计大赛 · 壹组</span>
+    <span>待填·非遗项目全称</span>
+  </div>
+</footer>
+
+<script src="js/data.js" defer></script>
+<script src="js/art.js" defer></script>
+<script src="js/site.js" defer></script>
+<script src="js/collection.js" defer></script>
+</body>
+</html>

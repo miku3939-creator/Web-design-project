@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>入戏传 — 髹·两面</title>
+<meta name="description" content="【待填：页描述】">
+<meta name="theme-color" content="#070504">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/framework.css">
+</head>
+<body data-page="story">
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<header class="story-head">
+  <a class="story-back" href="index.html">← 离开工坊</a>
+  <div class="story-brand">髹 · 两面 <span>入戏传</span></div>
+  <div class="story-head__right">
+    <div class="story-progress" id="storyProgress" aria-label="工序进度">
+      <i data-dot="0"></i><i data-dot="1"></i><i data-dot="2"></i><i data-dot="3"></i>
+      <span id="storyProgressLabel">序</span>
+    </div>
+    <button class="story-reset" id="storyReset" type="button">重新开始</button>
+  </div>
+</header>
+
+<main id="main">
+  <!-- 开场 -->
+  <section class="story-intro" id="storyIntro">
+    <div class="story-intro__inner">
+      <p class="story-intro__kicker" id="introKicker"></p>
+      <h1 class="story-intro__title" id="introTitle"></h1>
+      <div class="story-intro__text" id="introText"></div>
+      <p class="story-intro__note" id="introNote"></p>
+      <button class="btn btn--red" id="startStory" type="button"><span id="startLabel"></span><span class="arr">→</span></button>
+    </div>
+  </section>
+
+  <!-- 四步工序 -->
+  <section class="story-work" id="storyWork" hidden>
+    <aside class="story-copy">
+      <div class="story-copy__inner" id="storyCopy">
+        <p class="story-copy__kicker" id="stepKicker"></p>
+        <h2 class="story-copy__title" id="stepTitle"></h2>
+        <div class="story-copy__text" id="stepStory"></div>
+        <p class="story-copy__fact" id="stepFact"></p>
+      </div>
+      <div class="story-copy__nav">
+        <button class="btn btn--ghost btn--small" id="prevStep" type="button">上一步</button>
+        <button class="btn btn--red btn--small" id="nextStep" type="button" disabled><span>下一步</span><span class="arr">→</span></button>
+        <button class="story-copy__back" id="backToIntro" type="button">回到序</button>
+      </div>
+    </aside>
+
+    <div class="story-stage-wrap" id="stageWrap" data-scene="body">
+      <div class="story-stage" id="storyStage" role="group" aria-label="互动工序区">
+        <div class="story-stage__scene" data-scene-label="舞台" aria-hidden="true"></div>
+        <div class="story-stage__art temp-wrap" id="storyArt">
+          <span class="temp-badge">临时图·待替换</span>
+        </div>
+        <div class="story-meter" aria-hidden="true">
+          <div class="story-meter__bar"><i id="meterBar"></i></div>
+          <div class="story-meter__label"><span id="meterLabel"></span><b id="meterValue">0%</b></div>
+        </div>
+      </div>
+
+      <div class="story-action">
+        <p class="story-action__main" id="stepAction"></p>
+        <p class="story-action__helper">
+          <span id="stepHelper"></span>
+          <button class="story-action__skip" id="skipStep" type="button">跳过</button>
+        </p>
+      </div>
+
+      <div class="story-feedback" id="storyFeedback" role="status" aria-live="polite">
+        <p class="story-feedback__kicker">工序完成 · DONE</p>
+        <div class="story-feedback__text" id="feedbackText"></div>
+        <div class="story-feedback__actions">
+          <button class="btn btn--red btn--small" id="feedbackNext" type="button"><span>继续</span><span class="arr">→</span></button>
+          <button class="btn btn--ghost btn--small" id="feedbackStay" type="button">再看看</button>
+        </div>
+      </div>
+
+      <!-- 选择点 -->
+      <div class="choice-overlay" id="choiceOverlay" role="dialog" aria-modal="true">
+        <div class="choice-panel">
+          <p class="choice-panel__kicker" id="choiceKicker">选择 · CHOICE</p>
+          <h3 class="choice-panel__title" id="choiceTitle"></h3>
+          <p class="choice-panel__hint" id="choiceHint"></p>
+          <div class="choice-options" id="choiceOptions"></div>
+          <button class="btn btn--red" id="choiceConfirm" type="button"><span>就选这个</span><span class="arr">→</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 结局 + 图鉴 -->
+  <section class="story-end" id="storyEnd" hidden>
+    <div class="story-end__grid">
+      <div class="story-end__art temp-wrap" id="endArt">
+        <span class="temp-badge">临时图·待替换</span>
+      </div>
+      <div>
+        <p class="story-end__kicker" id="endKicker"></p>
+        <h2 class="story-end__title" id="endTitle"></h2>
+        <div class="story-end__text" id="endText"></div>
+        <div class="story-end__actions">
+          <button class="btn btn--red" id="openCard" type="button"><span>生成我的收藏卡</span><span class="arr">→</span></button>
+          <a class="btn btn--ghost" href="collection.html"><span>去看典藏馆</span><span class="arr">→</span></a>
+        </div>
+        <div class="story-end__meta" id="endMeta"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="codex" id="codex" hidden>
+    <div class="codex__head">
+      <div>
+        <p class="eyebrow">THE CODEX · 图鉴</p>
+        <h2 class="h2" style="margin-top:14px">做一步，解锁一页。</h2>
+      </div>
+      <p><span class="slot">待填：图鉴说明（≤40字）</span></p>
+    </div>
+    <div class="codex__grid" id="codexGrid"></div>
+    <div class="codex-bonus" id="codexBonus">
+      <h3 id="bonusTitle"></h3>
+      <p id="bonusText"></p>
+    </div>
+  </section>
+</main>
+
+<!-- 收藏卡 -->
+<div class="card-modal" id="cardModal" role="dialog" aria-modal="true" aria-labelledby="cardTitle" hidden>
+  <div class="card-shell">
+    <div class="collection-card" id="collectionCard">
+      <div class="collection-card__top"><span>髹 · 两 面</span><span>入戏传 / 我的楚漆</span></div>
+      <div class="collection-card__title" id="cardHead">我 的 楚 漆</div>
+      <div class="collection-card__sub" id="cardSub">CHU LACQUER · MY PIECE</div>
+      <div class="collection-card__art" id="cardArt"></div>
+      <div class="collection-card__name" id="cardName"></div>
+      <div class="collection-card__lines" id="cardLines"></div>
+      <div class="collection-card__seal">髹</div>
+      <div class="collection-card__no" id="cardNo"></div>
+    </div>
+    <div class="card-panel">
+      <p class="card-panel__kicker">YOUR COLLECTION CARD</p>
+      <h2 class="card-panel__title" id="cardTitle">给它留个名字。</h2>
+      <p class="card-panel__text">这张卡会记录你的选择：漆色、纹样与老师傅的评语。名字会印在卡上，图片可以直接保存。</p>
+      <div class="card-field">
+        <label for="cardNameInput">器名</label>
+        <input id="cardNameInput" type="text" maxlength="18" autocomplete="off">
+      </div>
+      <div class="card-panel__actions">
+        <button class="btn btn--red" id="saveCard" type="button"><span>保存收藏卡（PNG）</span><span class="arr">↓</span></button>
+        <button class="btn btn--ghost btn--small" id="redoStory" type="button">再做一件</button>
+      </div>
+      <button class="card-panel__close" id="closeCard" type="button">先不保存，回到结局</button>
+      <p class="card-panel__note">收藏卡由本页即时生成，不上传服务器。图像为临时示意图，待替换为定稿素材。</p>
+    </div>
+  </div>
+</div>
+
+<script src="js/data.js" defer></script>
+<script src="js/art.js" defer></script>
+<script src="js/site.js" defer></script>
+<script src="js/story.js" defer></script>
+</body>
+</html>

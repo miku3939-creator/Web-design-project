@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>器物详情 — 髹·两面</title>
+<meta name="description" content="【待填：页描述】">
+<meta name="theme-color" content="#060505">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/framework.css">
+</head>
+<body data-page="artifact">
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<header class="site-head">
+  <a class="brand" href="index.html" aria-label="髹·两面 首页">
+    <span class="seal brand__seal" aria-hidden="true">髹</span>
+    <span class="brand__text"><b>髹 · 两面</b><small>待填·站点副名</small></span>
+  </a>
+  <nav class="site-nav" aria-label="主导航">
+    <a href="index.html" data-nav="home">首页</a>
+    <a href="collection.html" data-nav="collection">典藏馆</a>
+    <a href="story.html" data-nav="story">入戏传</a>
+    <a href="about.html" data-nav="about">关于</a>
+  </nav>
+  <div class="mode-switch" aria-label="切换观看模式">
+    <a href="collection.html" data-mode="view">观器</a>
+    <a href="story.html" data-mode="make">造物</a>
+  </div>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="mobileNav" aria-label="打开菜单"><span></span><span></span><span></span></button>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" data-nav="home">首页 <small>HOME</small></a>
+  <a href="collection.html" data-nav="collection">典藏馆 <small>THE COLLECTION</small></a>
+  <a href="story.html" data-nav="story">入戏传 <small>THE MAKING</small></a>
+  <a href="about.html" data-nav="about">关于 <small>ABOUT</small></a>
+  <div class="mode-switch">
+    <a href="collection.html" data-mode="view">观器</a>
+    <a href="story.html" data-mode="make">造物</a>
+  </div>
+  <p class="mobile-meta">2026 武汉大学“零杯”网页设计大赛 · 壹组</p>
+</div>
+
+<main id="main">
+  <section class="object" id="objectSection">
+    <div class="object__top">
+      <nav class="page-head__crumb reveal" aria-label="面包屑" style="margin-bottom:0">
+        <a href="index.html">首页</a><span>/</span><a href="collection.html">典藏馆</a><span>/</span><span id="crumbName">器物</span>
+      </nav>
+      <div class="view-switch" role="group" aria-label="切换视角">
+        <button type="button" id="viewLabel" class="is-active" aria-pressed="true">展签视角</button>
+        <button type="button" id="viewWorkshop" aria-pressed="false">工坊视角</button>
+      </div>
+    </div>
+
+    <!-- ============ 展签视角 ============ -->
+    <div class="view-panel label-view" id="labelView">
+      <div class="object__grid">
+        <div class="object__stage-wrap">
+          <div class="stage-frame" id="objectStage" data-tilt="4">
+            <div class="object__tools">
+              <button class="object__tool" type="button" id="zoomBtn" aria-pressed="false">细看</button>
+              <button class="object__tool" type="button" id="annotateBtn" aria-pressed="false">纹样标注</button>
+            </div>
+            <div class="object__art temp-wrap" id="objectArt">
+              <span class="temp-badge">临时图·待替换</span>
+            </div>
+            <div id="hotspots"></div>
+            <span class="object__label">待填·素材声明（如：原创矢量重绘 · 非文物照片）</span>
+          </div>
+          <p class="object__sources" id="objectSources" style="margin-top:12px"></p>
+        </div>
+
+        <div class="label-sheet">
+          <div class="label-sheet__head">
+            <div class="object__no reveal"><i aria-hidden="true"></i><span id="objectNo"></span></div>
+            <h1 class="object__name reveal" id="objectName" style="--d:.05s"></h1>
+            <p class="object__en reveal" id="objectEn" style="--d:.08s"></p>
+          </div>
+          <div class="label-sheet__body">
+            <p class="object__summary reveal" id="objectSummary" style="--d:.1s"></p>
+            <dl class="object__meta reveal" id="objectMeta" style="--d:.14s"></dl>
+            <div class="object__actions reveal" style="--d:.18s">
+              <a class="btn btn--red" id="tryBtn" href="story.html"><span>亲手试试</span><span class="arr">→</span></a>
+              <a class="btn btn--ghost no-door" href="#" id="toWorkshopView"><span>切到工坊视角</span><span class="arr">→</span></a>
+            </div>
+            <p class="object__sources reveal" id="objectCollection" style="--d:.2s"></p>
+          </div>
+        </div>
+      </div>
+
+      <section class="about-section" style="border-bottom:0">
+        <div class="about-section__head">
+          <div>
+            <p class="eyebrow reveal">ABOUT THIS OBJECT</p>
+            <h2 class="reveal" style="margin-top:13px">器与它的时间</h2>
+          </div>
+          <p class="reveal"><span class="slot">待填：释文引言（≤30字）</span></p>
+        </div>
+        <div class="about-section__body" id="objectText"></div>
+      </section>
+
+      <div class="about-section" style="border-bottom:0">
+        <div class="about-section__body">
+          <div class="stub reveal">
+            <div>
+              <b>互动槽位：三个看点</b>
+              <span>把器物的三个记忆点做成横排卡片（标题 + 说明）。<br>数据在 data.js 的 highlights 字段，样式可参考 design-system.html。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ 工坊视角 ============ -->
+    <div class="view-panel workshop-view" id="workshopView">
+      <div class="object__grid">
+        <div class="object__stage-wrap">
+          <div class="stage-frame" id="workshopStage">
+            <div class="object__art temp-wrap" id="workshopArt">
+              <span class="temp-badge">临时图·待替换</span>
+            </div>
+            <span class="object__label">待填·素材声明</span>
+          </div>
+          <p class="object__sources" style="margin-top:12px"><span class="slot">待填：工坊视角说明（≤50字）</span></p>
+        </div>
+
+        <div class="label-sheet">
+          <div class="label-sheet__head">
+            <div class="object__no reveal"><i aria-hidden="true"></i><span>工坊视角 · THE MAKING</span></div>
+            <h1 class="object__name reveal" style="--d:.05s"><span class="slot">待填：工坊视角标题（如：它这样做成）</span></h1>
+          </div>
+          <div class="label-sheet__body">
+            <p class="object__summary reveal" style="--d:.08s"><span class="slot">待填：工坊视角导语（≤60字）</span></p>
+            <div class="workshop-view__steps reveal" id="workshopSteps" style="--d:.12s"></div>
+            <div class="object__actions reveal" style="--d:.16s">
+              <a class="btn btn--red" id="tryBtn2" href="story.html"><span>亲手试试</span><span class="arr">→</span></a>
+              <a class="btn btn--ghost no-door" href="#" id="toLabelView"><span>回到展签视角</span><span class="arr">→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-section" style="border-bottom:0">
+        <div class="about-section__body">
+          <div class="stub reveal">
+            <div>
+              <b>互动槽位：工序切片扩展</b>
+              <span>可以在这里放这件器物各工序的"过程切片"图组，<br>或者放一段相关工序的完整演示；由美术与工匠共同决定。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ 相关器物 + 翻页（两个视角共用） ============ -->
+    <div class="about-section" style="border-bottom:0">
+      <div class="about-section__head">
+        <div>
+          <p class="eyebrow reveal">KEEP LOOKING</p>
+          <h2 class="reveal" style="margin-top:13px">再看三件</h2>
+        </div>
+        <a class="link-arrow reveal" href="collection.html">回到典藏馆</a>
+      </div>
+      <div class="about-section__body">
+        <div class="cabinet-grid" id="relatedGrid" style="grid-template-columns:repeat(3,1fr);width:100%"></div>
+      </div>
+    </div>
+
+    <div class="about-section__body" style="margin-top:44px">
+      <div class="spec" id="objectNav" style="grid-template-columns:1fr 1fr"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="site-foot__top">
+    <div class="site-foot__brand">
+      <a class="brand" href="index.html">
+        <span class="seal brand__seal" aria-hidden="true">髹</span>
+        <span class="brand__text"><b>髹 · 两面</b><small>待填·站点副名</small></span>
+      </a>
+      <p><span class="slot">待填：页脚导语</span></p>
+    </div>
+    <div class="site-foot__cols">
+      <div>
+        <h3>展览</h3>
+        <a href="collection.html">典藏馆</a>
+        <a href="story.html">入戏传</a>
+        <a href="about.html">关于</a>
+      </div>
+      <div>
+        <h3>项目</h3>
+        <a href="about.html">关于</a>
+        <a href="about.html#tech">技术与规格</a>
+        <a href="about.html#rights">内容与版权</a>
+      </div>
+      <div>
+        <h3>声明</h3>
+        <p><span class="slot">待填：素材声明</span></p>
+        <p><span class="slot">待填：叙事声明</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="site-foot__bottom">
+    <span>2026 武汉大学“零杯”网页设计大赛 · 壹组</span>
+    <span>待填·非遗项目全称</span>
+  </div>
+</footer>
+
+<script src="js/data.js" defer></script>
+<script src="js/art.js" defer></script>
+<script src="js/site.js" defer></script>
+<script src="js/artifact.js" defer></script>
+</body>
+</html>
